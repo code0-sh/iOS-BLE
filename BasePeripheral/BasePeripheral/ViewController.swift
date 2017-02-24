@@ -54,7 +54,7 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
         print("Successful advertisement start.")
     }
     /**
-     * セントラルからの読み要求に応答する際のデリゲートメソッド
+     * セントラルからの読み込み要求に応答する際のデリゲートメソッド
      */
     internal func peripheralManager(_ peripheral: CBPeripheralManager, didReceiveRead request: CBATTRequest) {
         print("Receive a Read Request from Central.")
@@ -67,6 +67,35 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
         }
     }
     /**
+     * セントラルからの書き込み要求に応答する際のデリゲートメソッド
+     */
+    internal func peripheralManager(_ peripheral: CBPeripheralManager, didReceiveWrite requests: [CBATTRequest]) {
+        print("Receive a Write Request from Central.")
+        for request in requests {
+            if request.characteristic.uuid.isEqual(self.characteristic.uuid) {
+                self.characteristic.value = request.value
+            }
+        }
+        // 要求に応答する
+        self.peripheralManager.respond(to: requests[0], withResult: .success)
+        
+        // 通知を更新する
+        guard let value = self.characteristic.value else {
+            return
+        }
+        self.peripheralManager.updateValue(value, for: self.characteristic, onSubscribedCentrals: nil)
+    }
+    /**
+     * セントラルからの通知要求に応答する際のデリゲートメソッド
+     */
+//    internal func peripheralManager(_ peripheral: CBPeripheralManager, central: CBCentral, didSubscribeTo characteristic: CBCharacteristic) {
+//        print("Subscribeリクエストを受信")
+//        print("Subscribe中のセントラル: \(characteristic.uuid.uuidString)")
+//        if let data = self.characteristic.value {
+//            peripheralManager.updateValue(data, for: self.characteristic, onSubscribedCentrals: nil)
+//        }
+//    }
+    /**
      * サービスを作成してペリフェラルマネージャに登録する
      */
     private func setupService() {
@@ -75,8 +104,8 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
         
         let characteristicUUID = CBUUID(string: "FFF1")
         // * 重要なデータについてはペアリングした機器からのアクセスのみを許可する
-        let properties: CBCharacteristicProperties = [.read]
-        let permissions: CBAttributePermissions = [.readable]
+        let properties: CBCharacteristicProperties = [.notify, .read, .write]
+        let permissions: CBAttributePermissions = [.readable, .writeable]
         
         self.characteristic = CBMutableCharacteristic(type: characteristicUUID,
                                                       properties: properties,

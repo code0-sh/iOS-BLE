@@ -43,15 +43,60 @@
                                     <action selector="stopScan:" destination="BYZ-38-t0r" eventType="touchUpInside" id="E9B-Sl-VfJ"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xuD-gk-P4W">
+                                <rect key="frame" x="87.5" y="528.5" width="200" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="4Jr-jO-gQu"/>
+                                    <constraint firstAttribute="width" constant="200" id="5uV-FR-YFS"/>
+                                </constraints>
+                                <state key="normal" title="書き込み"/>
+                                <connections>
+                                    <action selector="write:" destination="BYZ-38-t0r" eventType="touchUpInside" id="z0P-2l-Has"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="N2t-y5-14O">
+                                <rect key="frame" x="87.5" y="458.5" width="200" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="pcv-ph-rr0"/>
+                                    <constraint firstAttribute="width" constant="200" id="twr-i9-wNU"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="特性値" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gtj-m7-dfA">
+                                <rect key="frame" x="161" y="120" width="52" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VFA-UN-EjC">
+                                <rect key="frame" x="166" y="171" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="N2t-y5-14O" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="AFj-y9-Tg2"/>
                             <constraint firstItem="uv4-iz-qJ4" firstAttribute="top" secondItem="6DV-lq-gIt" secondAttribute="bottom" constant="40" id="FJh-GR-UDi"/>
+                            <constraint firstItem="xuD-gk-P4W" firstAttribute="top" secondItem="N2t-y5-14O" secondAttribute="bottom" constant="40" id="KmN-dm-0ry"/>
                             <constraint firstItem="uv4-iz-qJ4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Myp-O3-jw9"/>
+                            <constraint firstItem="Gtj-m7-dfA" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="100" id="U0A-KO-UH5"/>
+                            <constraint firstItem="Gtj-m7-dfA" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="WsN-zz-ujW"/>
+                            <constraint firstItem="xuD-gk-P4W" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Y5L-5m-uAs"/>
+                            <constraint firstItem="VFA-UN-EjC" firstAttribute="top" secondItem="Gtj-m7-dfA" secondAttribute="bottom" constant="30" id="hEY-k0-vVc"/>
+                            <constraint firstItem="VFA-UN-EjC" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="lHy-A1-HJG"/>
+                            <constraint firstItem="N2t-y5-14O" firstAttribute="top" secondItem="uv4-iz-qJ4" secondAttribute="bottom" constant="40" id="lfa-kK-RvN"/>
                             <constraint firstItem="6DV-lq-gIt" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="rd0-Pd-j7b"/>
                             <constraint firstItem="6DV-lq-gIt" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="t4N-iS-CUS"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="characteristicLabel" destination="VFA-UN-EjC" id="CBA-5B-RPf"/>
+                        <outlet property="writeTextField" destination="N2t-y5-14O" id="VFN-h9-Fxn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
