@@ -18,6 +18,7 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
      */
     @IBAction func startScan(_ sender: UIButton) {
         print("startScan")
+        isNotificationSate = false
         isReadState = true
         // セントラルマネージャを生成
         self.centralManager = CBCentralManager(delegate: self, queue: nil, options: nil)
@@ -27,6 +28,7 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
      */
     @IBAction func stopScan(_ sender: UIButton) {
         print("stopScan")
+        isNotificationSate = false
         self.centralManager.stopScan()
     }
     /**
