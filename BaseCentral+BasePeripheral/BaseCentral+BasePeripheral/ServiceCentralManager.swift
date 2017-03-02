@@ -54,6 +54,10 @@ extension ServiceCentralManager: CBCentralManagerDelegate, CBPeripheralDelegate 
         // ペリフェラルとのやり取りを始める前に、ペリフェラルのデリデートをセット
         peripheral.delegate = self
         
+        // UUIDを保存しておく
+        let UUID = peripheral.identifier.uuidString
+        UserDefaults.standard.set(UUID, forKey: "UUID")
+        
         // サービスの検出開始
         // 不要なサービスが多数見つかる場合、電池と時間が無駄になるので必要なサービスのUUIDを具体的に指定すると良い
         peripheral.discoverServices([serviceUUID])
@@ -136,6 +140,7 @@ extension ServiceCentralManager: CBCentralManagerDelegate, CBPeripheralDelegate 
         //            return
         //        }
         //        print("Successful writing of characteristic values. service uuid: \(characteristic.service.uuid.uuidString), characteristic uuid: \(characteristic.uuid.uuidString), value: \(value)")
+        
         print("End writing.")
     }
 }

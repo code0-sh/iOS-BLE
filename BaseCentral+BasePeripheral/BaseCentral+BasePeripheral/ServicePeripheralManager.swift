@@ -6,9 +6,11 @@ class ServicePeripheralManager: NSObject {
     var serviceUUIDs: [CBUUID] = []
     var characteristic: CBMutableCharacteristic!
     var service: CBMutableService!
+    var characteristicSettings: CharacteristicSettings
     
     // サービスを作成してペリフェラルマネージャに登録する
-    override init() {
+    init(characteristicSettings: CharacteristicSettings) {
+        self.characteristicSettings = characteristicSettings
         super.init()
         self.peripheralManager = CBPeripheralManager(delegate: self, queue: nil, options: nil)
     }
@@ -26,13 +28,13 @@ extension ServicePeripheralManager: CBPeripheralManagerDelegate {
             
             // キャラクタリスティクに値を設定する
             // * ペリフェラルマネージャにサービスを追加してから値を設定すること
-            let value = "HOGEHOGE"
+            let value = characteristicSettings.value
             let data = value.data(using: String.Encoding.utf8)
             self.characteristic?.value = data
             
             // * アドバタイズするのはデバイスのローカル名とサービスのUUIDだけ
             // * アドバタイズの容量はアプリケーションがフォアグラウンド状態で28バイトまででこの領域に入りきらないサービスUUIDは、特別な「オーバーフロー」領域に追加する。その場合検出するためには、明示的に当該UUIDを指定して走査しないといけない。
-            let advertisementData: [String : Any] = [CBAdvertisementDataLocalNameKey: "Test Device2",
+            let advertisementData: [String : Any] = [CBAdvertisementDataLocalNameKey: "Test Device",
                                                      CBAdvertisementDataServiceUUIDsKey: self.serviceUUIDs]
             peripheralManager.startAdvertising(advertisementData)
         default:
@@ -95,10 +97,10 @@ extension ServicePeripheralManager: CBPeripheralManagerDelegate {
      * サービスを作成してペリフェラルマネージャに登録する
      */
     private func setupService() {
-        let serviceUUID = CBUUID(string: "FFF2")
+        let serviceUUID = CBUUID(string: "FFF0")
         let service = CBMutableService(type: serviceUUID, primary: true)
         
-        let characteristicUUID = CBUUID(string: "FFF3")
+        let characteristicUUID = CBUUID(string: characteristicSettings.UUID)
         // * 重要なデータについてはペアリングした機器からのアクセスのみを許可する
         let properties: CBCharacteristicProperties = [.notify, .read, .write]
         let permissions: CBAttributePermissions = [.readable, .writeable]

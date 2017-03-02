@@ -8,6 +8,7 @@ class ViewController: UIViewController {
     
     var isWriteState = false
     var isReadState = false
+    var isNotificationSate = false
     
     @IBOutlet weak var writeTextField: UITextField!
     @IBOutlet weak var characteristicLabel: UILabel!
@@ -23,6 +24,7 @@ class ViewController: UIViewController {
      */
     @IBAction func startScan(_ sender: UIButton) {
         print("startScan")
+        isNotificationSate = false
         isReadState = true
         // セントラルマネージャを生成
         self.serviceCentralManager = ServiceCentralManager()
@@ -33,6 +35,7 @@ class ViewController: UIViewController {
      */
     @IBAction func stopScan(_ sender: UIButton) {
         print("stopScan")
+        isNotificationSate = false
         self.serviceCentralManager?.centralManager.stopScan()
     }
     /**
@@ -41,16 +44,22 @@ class ViewController: UIViewController {
     @IBAction func write(_ sender: UIButton) {
         print("write")
         isWriteState = true
-        // セントラルマネージャを生成
-        self.serviceCentralManager = ServiceCentralManager()
-        serviceCentralManager?.delegate = self
+        // 既知のペリフェラルへの再接続
+        guard let UUIDString = UserDefaults.standard.string(forKey: "UUID"), let UUID = NSUUID(uuidString: UUIDString) else {
+            return
+        }
+        let peripherals = self.serviceCentralManager?.centralManager.retrievePeripherals(withIdentifiers: [UUID as UUID])
+        if let peripheral =  peripherals?.first {
+            self.serviceCentralManager?.centralManager.connect(peripheral, options: nil)
+        }
     }
     
     /**
      * ペリフェラルマネージャオブジェクトを起動する
      */
     @IBAction func startAdvertising(_ sender: UIButton) {
-        servicePeripheralManager = ServicePeripheralManager()
+        let settings = CharacteristicSettings(UUID: "FFF1", value: "HOGEHOGE")
+        servicePeripheralManager = ServicePeripheralManager(characteristicSettings: settings)
     }
     /**
      *アドバタイズを停止する
@@ -71,8 +80,9 @@ extension ViewController: ServiceCentralManagerDelegate {
             peripheral.readValue(for: characteristic)
         }
         // 通知
-        if characteristic.properties.contains(.notify) {
+        if characteristic.properties.contains(.notify) && isNotificationSate == false {
             // 特性の値が変化したときに通知するよう申し込む
+            isNotificationSate = true
             print("Apply to notify when property values change.")
             peripheral.setNotifyValue(true, for: characteristic)
         }
@@ -92,5 +102,14 @@ extension ViewController: ServiceCentralManagerDelegate {
     // 特性の値をラベルに表示する
     func displayCharacteristicValue(value: String) {
         characteristicLabel.text = value
+    }
+}
+
+final class CharacteristicSettings {
+    var UUID: String
+    var value: String
+    init(UUID: String, value: String) {
+        self.UUID = UUID
+        self.value = value
     }
 }
