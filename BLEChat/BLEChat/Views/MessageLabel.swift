@@ -1,6 +1,6 @@
 import UIKit
 
-class CommentLabel: UILabel {
+class MessageLabel: UILabel {
     init(_ rect: CGRect, comment: String) {
         super.init(frame: rect)
         self.text = comment

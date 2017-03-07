@@ -1,9 +1,9 @@
 import UIKit
 
-class ViewController: UIViewController, InputFieldViewDelegate {
+class ViewController: UIViewController, InputViewDelegate {
     var myItems: [String] = []
     private var tableView: UITableView!
-    private var inputFieldView: InputFieldView!
+    private var inputFieldView: InputView!
     private var barHeight: CGFloat = 0
     
     override func viewDidLoad() {
@@ -28,14 +28,13 @@ class ViewController: UIViewController, InputFieldViewDelegate {
         
         self.view.addSubview(tableView)
         
-        inputFieldView = InputFieldView(frame: CGRect.zero)
+        inputFieldView = InputView(frame: CGRect.zero)
         inputFieldView.delegate = self
         self.view.addSubview(inputFieldView)
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        print("回転")
         layoutTableView()
         layoutInputFieldView()
     }
@@ -61,27 +60,9 @@ class ViewController: UIViewController, InputFieldViewDelegate {
                                  height: Constants.textFieldHeight)
         inputFieldView.textField.center.x = self.view.frame.width / 2
     }
-    
-    func createBalloon(cell: UITableViewCell) -> BalloonView {
-        let frame = CGRect(x: (self.view.frame.width - 200) / 2, y: 0, width: 280, height: 100)
-        let balloon = BalloonView(frame: frame)
-        balloon.backgroundColor = UIColor.white
         
-        let comment = CommentLabel(CGRect(x: 0,
-                                          y: 0,
-                                          width: 280 - balloon.triangleSideLength,
-                                          height: 100),
-                                   comment: "コメントコメント")
-        balloon.addSubview(comment)
-        
-        let icon = IconImageView(frame, name: "Icon")
-        balloon.addSubview(icon)
-        
-        return balloon
-    }
-    
-    func addComment() {
-        myItems.insert("ADD TEST", at: 0)
+    func addComment(comment: String) {
+        myItems.append(comment)
         tableView.reloadData()
         /// 最新コメントが表示されるようにスクロールする
         if myItems.count > 3 {

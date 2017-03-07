@@ -1,7 +1,7 @@
 import UIKit
 
-class InputFieldView: UIView, UITextFieldDelegate {
-    weak var delegate: InputFieldViewDelegate?
+class InputView: UIView, UITextFieldDelegate {
+    weak var delegate: InputViewDelegate?
     var textField: UITextField! = UITextField()
     var sendButton: UIButton! = UIButton()
 
@@ -33,8 +33,11 @@ class InputFieldView: UIView, UITextFieldDelegate {
     /// 送信ボタンをタッチ
     func touchSendButton() {
         print("送信")
+        guard let comment = textField.text else {
+            return
+        }
+        self.delegate?.addComment(comment: comment)
         textField.text = ""
-        self.delegate?.addComment()
     }
     /// TextFieldを閉じる
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

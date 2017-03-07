@@ -1,6 +1,6 @@
 import UIKit
 
-class IconImageView: UIImageView {
+class MessageIconImageView: UIImageView {
     init(_ rect: CGRect, name: String) {
         super.init(frame: rect)
         self.frame.size = CGSize(width: 100, height: 100)

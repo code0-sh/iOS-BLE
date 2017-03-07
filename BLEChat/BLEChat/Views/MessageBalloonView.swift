@@ -1,10 +1,9 @@
 import UIKit
 import CoreGraphics
 
-class BalloonView: UIView {
-    
-    var triangleSideLength: CGFloat = 20
-    var triangleHeight: CGFloat = 20
+class MessageBalloonView: UIView {
+    let triangleSideLength: CGFloat = 20
+    let triangleHeight: CGFloat = 20
     
     override func draw(_ rect: CGRect) {
         super.draw(rect)
@@ -18,12 +17,18 @@ class BalloonView: UIView {
     }
     
     private func contextBalloonPath(context: CGContext, rect: CGRect) {
-        let triangleTopCorner = (x: rect.maxX - triangleSideLength, y: (rect.maxY + triangleHeight) / 2)
-        let triangleCenterCorner = (x: rect.maxX, y: rect.maxY / 2)
-        let triangleBottomCorner = (x: rect.maxX - triangleSideLength, y: (rect.maxY - triangleHeight) / 2)
+        let triangleTopCorner = (x: rect.maxX - triangleSideLength,
+                                 y: (rect.maxY + triangleHeight) / 2)
+        let triangleCenterCorner = (x: rect.maxX,
+                                    y: rect.maxY / 2)
+        let triangleBottomCorner = (x: rect.maxX - triangleSideLength,
+                                    y: (rect.maxY - triangleHeight) / 2)
         
         /// 塗りつぶし
-        context.addRect(CGRect(x: 0, y: 0, width: 280 - triangleSideLength, height: rect.size.height))
+        context.addRect(CGRect(x: 0,
+                               y: 0,
+                               width: Constants.messageComponentSideLength - triangleSideLength,
+                               height: Constants.messageComponentHeightLength))
         context.fillPath()
         context.move(to: CGPoint(x: triangleBottomCorner.x, y: triangleBottomCorner.y))
         context.addLine(to: CGPoint(x: triangleCenterCorner.x, y: triangleCenterCorner.y))

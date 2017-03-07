@@ -11,9 +11,8 @@ extension ViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        
-        let balloon = createBalloon(cell: cell)
-        cell.contentView.addSubview(balloon)
+        let messageComponent = MessageComponent(frame: self.view.frame, comment: myItems[indexPath.row], iconName: "Icon")
+        cell.contentView.addSubview(messageComponent)
         
         return cell
     }
