@@ -9,7 +9,7 @@ class BalloonView: UIView {
     override func draw(_ rect: CGRect) {
         super.draw(rect)
         
-        // コンテキストを取得
+        /// コンテキストを取得
         guard let context = UIGraphicsGetCurrentContext() else {
             return
         }
@@ -22,7 +22,7 @@ class BalloonView: UIView {
         let triangleCenterCorner = (x: rect.maxX, y: rect.maxY / 2)
         let triangleBottomCorner = (x: rect.maxX - triangleSideLength, y: (rect.maxY - triangleHeight) / 2)
         
-        // 塗りつぶし
+        /// 塗りつぶし
         context.addRect(CGRect(x: 0, y: 0, width: 280 - triangleSideLength, height: rect.size.height))
         context.fillPath()
         context.move(to: CGPoint(x: triangleBottomCorner.x, y: triangleBottomCorner.y))

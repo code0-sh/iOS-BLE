@@ -5,6 +5,7 @@ class IconImageView: UIImageView {
         super.init(frame: rect)
         self.frame.size = CGSize(width: 100, height: 100)
         self.frame.origin.y =  0
+        self.frame.origin.x = 300
         self.clipsToBounds = true
         self.contentMode = .scaleAspectFill
         self.layer.cornerRadius = 50
