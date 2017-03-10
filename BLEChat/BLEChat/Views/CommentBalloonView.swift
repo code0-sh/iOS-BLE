@@ -1,7 +1,7 @@
 import UIKit
 import CoreGraphics
 
-class MessageBalloonView: UIView {
+class CommentBalloonView: UIView {
     let triangleSideLength: CGFloat = 20
     let triangleHeight: CGFloat = 20
     
@@ -27,8 +27,8 @@ class MessageBalloonView: UIView {
         /// 塗りつぶし
         context.addRect(CGRect(x: 0,
                                y: 0,
-                               width: Constants.messageComponentSideLength - triangleSideLength,
-                               height: Constants.messageComponentHeightLength))
+                               width: Constants.commentComponentSideLength - triangleSideLength,
+                               height: Constants.commentComponentHeightLength))
         context.fillPath()
         context.move(to: CGPoint(x: triangleBottomCorner.x, y: triangleBottomCorner.y))
         context.addLine(to: CGPoint(x: triangleCenterCorner.x, y: triangleCenterCorner.y))

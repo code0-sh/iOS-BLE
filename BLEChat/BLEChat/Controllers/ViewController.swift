@@ -1,7 +1,7 @@
 import UIKit
 
 class ViewController: UIViewController, InputViewDelegate {
-    var myItems: [String] = []
+    var users: [User] = []
     private var tableView: UITableView!
     private var inputFieldView: InputView!
     private var barHeight: CGFloat = 0
@@ -61,11 +61,12 @@ class ViewController: UIViewController, InputViewDelegate {
         inputFieldView.textField.center.x = self.view.frame.width / 2
     }
         
-    func addComment(comment: String) {
-        myItems.append(comment)
+    func addComment(user: User) {
+        print("user:\(user)")
+        users.append(user)
         tableView.reloadData()
         /// 最新コメントが表示されるようにスクロールする
-        if myItems.count > 3 {
+        if users.count > 3 {
             tableView.setContentOffset(CGPoint(x: 0,
                                                y: tableView.contentSize.height - tableView.frame.size.height),
                                        animated: false)

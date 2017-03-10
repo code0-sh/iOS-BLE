@@ -1,15 +1,11 @@
 import UIKit
 
-class MessageLabel: UILabel {
-    init(_ rect: CGRect, comment: String) {
+class CustomLabel: UILabel {
+    init(_ rect: CGRect, data: String) {
         super.init(frame: rect)
-        self.text = comment
+        self.text = data
         self.textColor = UIColor.white
         self.font = UIFont.boldSystemFont(ofSize: 16)
-        self.textAlignment = .left
-        /// 複数行表示
-        self.numberOfLines = 0
-        self.sizeToFit()
     }
     
     required init?(coder aDecoder: NSCoder) {

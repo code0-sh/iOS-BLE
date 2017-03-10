@@ -7,18 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1346EADF1E6D2667001F2F7B /* MessageLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1346EADE1E6D2667001F2F7B /* MessageLabel.swift */; };
-		1346EAE11E6D3373001F2F7B /* MessageIconImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1346EAE01E6D3373001F2F7B /* MessageIconImageView.swift */; };
+		1346EADF1E6D2667001F2F7B /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1346EADE1E6D2667001F2F7B /* CustomLabel.swift */; };
 		1346EAE41E6D48C4001F2F7B /* ViewController+UITableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1346EAE31E6D48C4001F2F7B /* ViewController+UITableViewDataSource.swift */; };
 		1346EAE61E6D4909001F2F7B /* ViewController+UITableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1346EAE51E6D4909001F2F7B /* ViewController+UITableViewDelegate.swift */; };
+		1378D0111E723A2600EDC071 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1378D0101E723A2600EDC071 /* User.swift */; };
+		1378D0131E72605400EDC071 /* NSDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1378D0121E72605400EDC071 /* NSDate.swift */; };
 		13A888B71E6CE1030012F47D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A888B61E6CE1030012F47D /* AppDelegate.swift */; };
 		13A888B91E6CE1030012F47D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A888B81E6CE1030012F47D /* ViewController.swift */; };
 		13A888BC1E6CE1040012F47D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13A888BA1E6CE1040012F47D /* Main.storyboard */; };
 		13A888BE1E6CE1040012F47D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13A888BD1E6CE1040012F47D /* Assets.xcassets */; };
 		13A888C11E6CE1040012F47D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13A888BF1E6CE1040012F47D /* LaunchScreen.storyboard */; };
 		13A888CC1E6CE1040012F47D /* BLEChatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A888CB1E6CE1040012F47D /* BLEChatTests.swift */; };
-		13A888D91E6CFB4F0012F47D /* MessageBalloonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A888D81E6CFB4F0012F47D /* MessageBalloonView.swift */; };
-		13C3AFDC1E70E157006433EB /* MessageComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C3AFDB1E70E157006433EB /* MessageComponent.swift */; };
+		13A888D91E6CFB4F0012F47D /* CommentBalloonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A888D81E6CFB4F0012F47D /* CommentBalloonView.swift */; };
+		13C3AFDC1E70E157006433EB /* CommentComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C3AFDB1E70E157006433EB /* CommentComponent.swift */; };
 		13DC33BD1E6E490A000D0DB8 /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13DC33BC1E6E490A000D0DB8 /* InputView.swift */; };
 		13DC33C01E6E4CC9000D0DB8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13DC33BF1E6E4CC9000D0DB8 /* Constants.swift */; };
 		13DC33C31E6E67AF000D0DB8 /* InputViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13DC33C21E6E67AF000D0DB8 /* InputViewDelegate.swift */; };
@@ -35,10 +36,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1346EADE1E6D2667001F2F7B /* MessageLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageLabel.swift; sourceTree = "<group>"; };
-		1346EAE01E6D3373001F2F7B /* MessageIconImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageIconImageView.swift; sourceTree = "<group>"; };
+		1346EADE1E6D2667001F2F7B /* CustomLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 		1346EAE31E6D48C4001F2F7B /* ViewController+UITableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ViewController+UITableViewDataSource.swift"; sourceTree = "<group>"; };
 		1346EAE51E6D4909001F2F7B /* ViewController+UITableViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ViewController+UITableViewDelegate.swift"; sourceTree = "<group>"; };
+		1378D0101E723A2600EDC071 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		1378D0121E72605400EDC071 /* NSDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDate.swift; sourceTree = "<group>"; };
 		13A888B31E6CE1030012F47D /* BLEChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BLEChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13A888B61E6CE1030012F47D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		13A888B81E6CE1030012F47D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -49,8 +51,8 @@
 		13A888C71E6CE1040012F47D /* BLEChatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BLEChatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		13A888CB1E6CE1040012F47D /* BLEChatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLEChatTests.swift; sourceTree = "<group>"; };
 		13A888CD1E6CE1040012F47D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		13A888D81E6CFB4F0012F47D /* MessageBalloonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageBalloonView.swift; sourceTree = "<group>"; };
-		13C3AFDB1E70E157006433EB /* MessageComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageComponent.swift; sourceTree = "<group>"; };
+		13A888D81E6CFB4F0012F47D /* CommentBalloonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentBalloonView.swift; sourceTree = "<group>"; };
+		13C3AFDB1E70E157006433EB /* CommentComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentComponent.swift; sourceTree = "<group>"; };
 		13DC33BC1E6E490A000D0DB8 /* InputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
 		13DC33BF1E6E4CC9000D0DB8 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		13DC33C21E6E67AF000D0DB8 /* InputViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputViewDelegate.swift; sourceTree = "<group>"; };
@@ -77,11 +79,10 @@
 		1346EAE21E6D3DCA001F2F7B /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				13A888D81E6CFB4F0012F47D /* MessageBalloonView.swift */,
-				1346EADE1E6D2667001F2F7B /* MessageLabel.swift */,
-				1346EAE01E6D3373001F2F7B /* MessageIconImageView.swift */,
+				13A888D81E6CFB4F0012F47D /* CommentBalloonView.swift */,
+				1346EADE1E6D2667001F2F7B /* CustomLabel.swift */,
 				13DC33BC1E6E490A000D0DB8 /* InputView.swift */,
-				13C3AFDB1E70E157006433EB /* MessageComponent.swift */,
+				13C3AFDB1E70E157006433EB /* CommentComponent.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -91,8 +92,17 @@
 			children = (
 				1346EAE31E6D48C4001F2F7B /* ViewController+UITableViewDataSource.swift */,
 				1346EAE51E6D4909001F2F7B /* ViewController+UITableViewDelegate.swift */,
+				1378D0121E72605400EDC071 /* NSDate.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		1378D00F1E723A0700EDC071 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1378D0101E723A2600EDC071 /* User.swift */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 		13A888AA1E6CE1030012F47D = {
@@ -116,6 +126,7 @@
 		13A888B51E6CE1030012F47D /* BLEChat */ = {
 			isa = PBXGroup;
 			children = (
+				1378D00F1E723A0700EDC071 /* Models */,
 				13DC33BE1E6E4CAB000D0DB8 /* Constants */,
 				13DC33BB1E6E4858000D0DB8 /* Controllers */,
 				1346EAE71E6D4A80001F2F7B /* Extensions */,
@@ -273,17 +284,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				13A888D91E6CFB4F0012F47D /* MessageBalloonView.swift in Sources */,
+				13A888D91E6CFB4F0012F47D /* CommentBalloonView.swift in Sources */,
 				13DC33C31E6E67AF000D0DB8 /* InputViewDelegate.swift in Sources */,
-				1346EAE11E6D3373001F2F7B /* MessageIconImageView.swift in Sources */,
 				13A888B91E6CE1030012F47D /* ViewController.swift in Sources */,
-				1346EADF1E6D2667001F2F7B /* MessageLabel.swift in Sources */,
+				1346EADF1E6D2667001F2F7B /* CustomLabel.swift in Sources */,
 				1346EAE61E6D4909001F2F7B /* ViewController+UITableViewDelegate.swift in Sources */,
 				13A888B71E6CE1030012F47D /* AppDelegate.swift in Sources */,
 				13DC33BD1E6E490A000D0DB8 /* InputView.swift in Sources */,
 				1346EAE41E6D48C4001F2F7B /* ViewController+UITableViewDataSource.swift in Sources */,
-				13C3AFDC1E70E157006433EB /* MessageComponent.swift in Sources */,
+				13C3AFDC1E70E157006433EB /* CommentComponent.swift in Sources */,
 				13DC33C01E6E4CC9000D0DB8 /* Constants.swift in Sources */,
+				1378D0131E72605400EDC071 /* NSDate.swift in Sources */,
+				1378D0111E723A2600EDC071 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -368,7 +380,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -413,7 +425,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -428,7 +440,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = BNPC67H7PT;
 				INFOPLIST_FILE = BLEChat/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "jp.co.code0-sh.BLEChat";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -442,7 +454,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = BNPC67H7PT;
 				INFOPLIST_FILE = BLEChat/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "jp.co.code0-sh.BLEChat";
 				PRODUCT_NAME = "$(TARGET_NAME)";

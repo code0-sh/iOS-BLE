@@ -7,7 +7,7 @@ struct Constants {
     static let buttonWidth: CGFloat = 200
     static let buttonHeight: CGFloat = 50
     static let buttonCornerRadius: CGFloat = 10
-    /// メッセージコンポーメント
-    static let messageComponentSideLength: CGFloat = 280
-    static let messageComponentHeightLength: CGFloat = 100
+    /// コメントコンポーメント
+    static let commentComponentSideLength: CGFloat = 280
+    static let commentComponentHeightLength: CGFloat = 100
 }

@@ -2,7 +2,7 @@ import UIKit
 
 extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return myItems.count
+        return users.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -11,8 +11,8 @@ extension ViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        let messageComponent = MessageComponent(frame: self.view.frame, comment: myItems[indexPath.row], iconName: "Icon")
-        cell.contentView.addSubview(messageComponent)
+        let commentComponent = CommentComponent(frame: self.view.frame, user: users[indexPath.row])
+        cell.contentView.addSubview(commentComponent)
         
         return cell
     }

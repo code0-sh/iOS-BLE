@@ -33,10 +33,16 @@ class InputView: UIView, UITextFieldDelegate {
     /// 送信ボタンをタッチ
     func touchSendButton() {
         print("送信")
+        
+        let date = NSDate().dateString()
+        let name = "omura.522"
         guard let comment = textField.text else {
             return
         }
-        self.delegate?.addComment(comment: comment)
+        
+        let user = User(date: date, name: name, comment: comment)
+        
+        self.delegate?.addComment(user: user)
         textField.text = ""
     }
     /// TextFieldを閉じる
