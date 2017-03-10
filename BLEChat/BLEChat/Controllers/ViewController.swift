@@ -2,6 +2,7 @@ import UIKit
 
 class ViewController: UIViewController, InputViewDelegate {
     var users: [User] = []
+    var centralManager: CentralManager?
     private var tableView: UITableView!
     private var inputFieldView: InputView!
     private var barHeight: CGFloat = 0
@@ -31,6 +32,12 @@ class ViewController: UIViewController, InputViewDelegate {
         inputFieldView = InputView(frame: CGRect.zero)
         inputFieldView.delegate = self
         self.view.addSubview(inputFieldView)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        /// セントラルマネージャを生成
+        centralManager = CentralManager()
+        centralManager?.delegate = self
     }
     
     override func viewDidLayoutSubviews() {
