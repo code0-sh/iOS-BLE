@@ -7,7 +7,6 @@ class CustomLabel: UILabel {
         self.textColor = UIColor.white
         self.font = UIFont.boldSystemFont(ofSize: 16)
     }
-    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

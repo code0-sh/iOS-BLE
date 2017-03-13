@@ -1,13 +1,17 @@
 import UIKit
 
 struct Constants {
-    static let frameMargin: CGFloat = 40
-    static let textFieldHeight: CGFloat = 50
-    /// 送信ボタン
-    static let buttonWidth: CGFloat = 200
-    static let buttonHeight: CGFloat = 50
-    static let buttonCornerRadius: CGFloat = 10
+    /// 要素間の間隔
+    static let frameMargin: CGFloat = 20
     /// コメントコンポーメント
     static let commentComponentSideLength: CGFloat = 280
     static let commentComponentHeightLength: CGFloat = 100
+    /// 入力コンポーネント
+    static let inputComponentHeight: CGFloat = 200
+    /// 入力欄
+    static let textFieldHeight: CGFloat = 50
+    /// 送信/設定ボタン
+    static let buttonWidth: CGFloat = 200
+    static let buttonHeight: CGFloat = 50
+    static let buttonCornerRadius: CGFloat = 10
 }

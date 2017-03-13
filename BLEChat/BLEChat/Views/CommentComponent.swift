@@ -2,30 +2,27 @@ import UIKit
 
 class CommentComponent: UIView {
     private var user: User
-    
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
         createComponent()
     }
-    
     init(frame: CGRect, user: User) {
         self.user = user
         super.init(frame: frame)
     }
-    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    /// コンポーネント生成
+    /**
+     * コンポーネント生成する
+     */
     private func createComponent() {
-        let frame = CGRect(x: (self.frame.width - 200) / 2,
+        let frame = CGRect(x: (self.frame.width - Constants.commentComponentSideLength) / 2,
                            y: 0,
                            width: Constants.commentComponentSideLength,
                            height: Constants.commentComponentHeightLength)
         let balloon = CommentBalloonView(frame: frame)
         balloon.backgroundColor = UIColor.white
-    
         /// 日付
         let date = CustomLabel(CGRect.zero, data: user.date)
         date.sizeToFit()
@@ -39,12 +36,10 @@ class CommentComponent: UIView {
         comment.layer.position.y = date.frame.size.height + name.frame.size.height
         comment.numberOfLines = 0
         comment.sizeToFit()
-        
         balloon.addSubview(date)
         balloon.addSubview(name)
         balloon.addSubview(comment)
         balloon.clipsToBounds = true
-        
         self.addSubview(balloon)
     }
 }

@@ -1,5 +1,6 @@
 import CoreBluetooth
 
 protocol CentralManagerDelegate {
-    func displayCharacteristicValue(user: User)
+    /// 特性値の読み取りが終了した際のデリゲートメソッド
+    func readEndNotificationFromCentralManager(user: User)
 }

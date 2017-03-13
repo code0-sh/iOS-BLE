@@ -1,14 +1,18 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12113" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="EIr-fp-kx7">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12078"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="chat" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="ViewController" customModule="BLEChat" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -21,6 +25,72 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="706" y="90"/>
+        </scene>
+        <!--Setting View Controller-->
+        <scene sceneID="trx-Qv-LOC">
+            <objects>
+                <viewController storyboardIdentifier="setting" useStoryboardIdentifierAsRestorationIdentifier="YES" id="EIr-fp-kx7" customClass="SettingViewController" customModule="BLEChat" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3KE-pt-ojJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="Opg-43-Lh7"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="odY-bb-Hhd">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ldZ-Mp-FNZ">
+                                <rect key="frame" x="87" y="319" width="200" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="HQZ-ff-p43"/>
+                                    <constraint firstAttribute="height" constant="30" id="Ifv-hF-bH0"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ユーザ名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VU8-9k-qWV">
+                                <rect key="frame" x="87" y="282" width="70" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I8A-y6-Xwx">
+                                <rect key="frame" x="87" y="373" width="200" height="30"/>
+                                <state key="normal" title="設定"/>
+                                <connections>
+                                    <action selector="settingAction:" destination="EIr-fp-kx7" eventType="touchUpInside" id="1IB-gD-ntd"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RTb-PV-Yrr">
+                                <rect key="frame" x="87" y="423" width="200" height="30"/>
+                                <state key="normal" title="Chat開始"/>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="RD5-cy-E4I"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ldZ-Mp-FNZ" firstAttribute="leading" secondItem="RTb-PV-Yrr" secondAttribute="leading" id="9tZ-By-vAq"/>
+                            <constraint firstItem="ldZ-Mp-FNZ" firstAttribute="leading" secondItem="VU8-9k-qWV" secondAttribute="leading" id="VxU-uD-iWB"/>
+                            <constraint firstItem="ldZ-Mp-FNZ" firstAttribute="leading" secondItem="I8A-y6-Xwx" secondAttribute="leading" id="bge-GJ-VlR"/>
+                            <constraint firstItem="ldZ-Mp-FNZ" firstAttribute="trailing" secondItem="I8A-y6-Xwx" secondAttribute="trailing" id="c8h-Pt-pGZ"/>
+                            <constraint firstItem="ldZ-Mp-FNZ" firstAttribute="centerX" secondItem="odY-bb-Hhd" secondAttribute="centerX" id="eUb-JG-9Tr"/>
+                            <constraint firstItem="RTb-PV-Yrr" firstAttribute="top" secondItem="I8A-y6-Xwx" secondAttribute="bottom" constant="20" id="nNX-nc-CjV"/>
+                            <constraint firstItem="ldZ-Mp-FNZ" firstAttribute="centerY" secondItem="odY-bb-Hhd" secondAttribute="centerY" id="pJK-nu-TeF"/>
+                            <constraint firstItem="ldZ-Mp-FNZ" firstAttribute="trailing" secondItem="RTb-PV-Yrr" secondAttribute="trailing" id="qLR-fW-LnW"/>
+                            <constraint firstItem="ldZ-Mp-FNZ" firstAttribute="top" secondItem="VU8-9k-qWV" secondAttribute="bottom" constant="16" id="viS-yr-OJj"/>
+                            <constraint firstItem="I8A-y6-Xwx" firstAttribute="top" secondItem="ldZ-Mp-FNZ" secondAttribute="bottom" constant="24" id="yg2-p1-TT3"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="nameTextField" destination="ldZ-Mp-FNZ" id="148-qf-e5L"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vc4-aZ-fyf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-79.200000000000003" y="89.505247376311857"/>
         </scene>
     </scenes>
 </document>
