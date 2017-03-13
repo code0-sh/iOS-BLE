@@ -1,5 +1,5 @@
 import CoreBluetooth
 
 protocol CentralManagerDelegate {
-    func displayCharacteristicValue(comment: String)
+    func displayCharacteristicValue(user: User)
 }

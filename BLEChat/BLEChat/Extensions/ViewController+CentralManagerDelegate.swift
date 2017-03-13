@@ -2,8 +2,8 @@ import CoreBluetooth
 
 extension ViewController: CentralManagerDelegate {
     // 特性の値をラベルに表示する
-    func displayCharacteristicValue(comment: String) {
-        let user = User(date: NSDate().dateString(), name: "omura.523", comment: comment)
+    func displayCharacteristicValue(user: User) {
+        let user = User(date: user.date, name: user.name, comment: user.comment)
         addComment(user: user)
     }
 }

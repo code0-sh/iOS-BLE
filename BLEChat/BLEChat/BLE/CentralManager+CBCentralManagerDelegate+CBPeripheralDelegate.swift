@@ -111,16 +111,23 @@ extension CentralManager: CBCentralManagerDelegate, CBPeripheralDelegate {
         print("characteristic.uuid:\(characteristic.uuid)")
         switch characteristic.uuid {
         case characteristicDateUUID:
+            user.date = value as String
             print("日付")
         case characteristicNameUUID:
+            user.name = value as String
             print("名前")
         case characteristicCommentUUID:
+            isReaded = true
+            user.comment = value as String
             print("コメント")
         default:
             return
         }
-        self.delegate?.displayCharacteristicValue(comment: value as String)
         
+        if isReaded {
+            isReaded = false
+            self.delegate?.displayCharacteristicValue(user: user)
+        }
     }
     /**
      * 通知の申し込みが終了した際のデリゲートメソッド

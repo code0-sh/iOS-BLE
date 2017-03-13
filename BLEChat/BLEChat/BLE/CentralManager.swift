@@ -3,7 +3,9 @@ import CoreBluetooth
 class CentralManager: NSObject {
     var centralManager: CBCentralManager!
     var peripheral: CBPeripheral!
-    var delegate : CentralManagerDelegate!
+    var delegate: CentralManagerDelegate!
+    var isReaded = false
+    let user: User = User()
     let serviceUUID = CBUUID(string: "FFF0")
     let characteristicDateUUID = CBUUID(string: "FFF1")
     let characteristicNameUUID = CBUUID(string: "FFF2")
