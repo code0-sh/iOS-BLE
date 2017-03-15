@@ -49,8 +49,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ユーザ名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VU8-9k-qWV">
-                                <rect key="frame" x="87" y="282" width="70" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ユーザ名:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VU8-9k-qWV">
+                                <rect key="frame" x="87" y="282" width="74" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -69,14 +69,22 @@
                                     <segue destination="BYZ-38-t0r" kind="show" id="RD5-cy-E4I"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ユーザー名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sWA-7r-dF6">
+                                <rect key="frame" x="169" y="282" width="87" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="ldZ-Mp-FNZ" firstAttribute="leading" secondItem="RTb-PV-Yrr" secondAttribute="leading" id="9tZ-By-vAq"/>
+                            <constraint firstItem="ldZ-Mp-FNZ" firstAttribute="top" secondItem="sWA-7r-dF6" secondAttribute="bottom" constant="16" id="NBs-iP-KE1"/>
                             <constraint firstItem="ldZ-Mp-FNZ" firstAttribute="leading" secondItem="VU8-9k-qWV" secondAttribute="leading" id="VxU-uD-iWB"/>
                             <constraint firstItem="ldZ-Mp-FNZ" firstAttribute="leading" secondItem="I8A-y6-Xwx" secondAttribute="leading" id="bge-GJ-VlR"/>
                             <constraint firstItem="ldZ-Mp-FNZ" firstAttribute="trailing" secondItem="I8A-y6-Xwx" secondAttribute="trailing" id="c8h-Pt-pGZ"/>
                             <constraint firstItem="ldZ-Mp-FNZ" firstAttribute="centerX" secondItem="odY-bb-Hhd" secondAttribute="centerX" id="eUb-JG-9Tr"/>
+                            <constraint firstItem="sWA-7r-dF6" firstAttribute="leading" secondItem="VU8-9k-qWV" secondAttribute="trailing" constant="8" id="jo5-k2-Kp4"/>
                             <constraint firstItem="RTb-PV-Yrr" firstAttribute="top" secondItem="I8A-y6-Xwx" secondAttribute="bottom" constant="20" id="nNX-nc-CjV"/>
                             <constraint firstItem="ldZ-Mp-FNZ" firstAttribute="centerY" secondItem="odY-bb-Hhd" secondAttribute="centerY" id="pJK-nu-TeF"/>
                             <constraint firstItem="ldZ-Mp-FNZ" firstAttribute="trailing" secondItem="RTb-PV-Yrr" secondAttribute="trailing" id="qLR-fW-LnW"/>
@@ -85,6 +93,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="nameLabel" destination="sWA-7r-dF6" id="E6G-VO-Cvr"/>
                         <outlet property="nameTextField" destination="ldZ-Mp-FNZ" id="148-qf-e5L"/>
                     </connections>
                 </viewController>

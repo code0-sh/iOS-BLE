@@ -2,6 +2,8 @@ import UIKit
 
 class SettingViewController: UIViewController {
     var isResetName: Bool = false
+    private var name: String = "未設定"
+    @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
     /**
      * 設定ボタンをタップ
@@ -9,9 +11,15 @@ class SettingViewController: UIViewController {
     @IBAction func settingAction(_ sender: UIButton) {
         let userDefaults = UserDefaults.standard
         userDefaults.set(nameTextField.text, forKey: "name")
+        nameLabel.text = nameTextField.text
+        nameTextField.text = ""
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        guard let name = UserDefaults.standard.string(forKey: "name") else {
+            return
+        }
+        nameLabel.text = name
     }
     override func viewDidAppear(_ animated: Bool) {
         let userDefaults = UserDefaults.standard
