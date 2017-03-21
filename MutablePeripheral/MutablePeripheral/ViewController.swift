@@ -16,7 +16,7 @@ class ViewController: UIViewController {
      * ペリフェラルマネージャオブジェクトを起動する
      */
     @IBAction func startAdvertising(_ sender: UIButton) {
-        let settings = CharacteristicSettings(UUID: "FFF1", value: "HOGEHOGE")
+        let settings = CharacteristicSettings(UUID: "00001234-0001-1000-8000-00805f9b34fb", value: "HOGEHOGE")
         servicePeripheralManager = ServicePeripheralManager(characteristicSettings: settings)
         servicePeripheralManager?.delegate = self
     }

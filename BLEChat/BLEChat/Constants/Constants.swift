@@ -14,4 +14,9 @@ struct Constants {
     static let buttonWidth: CGFloat = 200
     static let buttonHeight: CGFloat = 50
     static let buttonCornerRadius: CGFloat = 10
+    /// UUID
+    static let serviceUUID = "00001234-0000-1000-8000-00805f9b34fb"
+    static let dateUUID = "00001234-0001-1000-8000-00805f9b34fb"
+    static let nameUUID = "00001234-0002-1000-8000-00805f9b34fb"
+    static let commentUUID = "00001234-0003-1000-8000-00805f9b34fb"
 }

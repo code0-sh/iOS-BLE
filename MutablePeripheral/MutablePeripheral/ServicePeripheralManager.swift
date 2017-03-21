@@ -119,7 +119,7 @@ extension ServicePeripheralManager: CBPeripheralManagerDelegate {
         print("Notify中のセントラル:\(String(describing: self.characteristic.subscribedCentrals))")
     }
     private func setupService() {
-        let serviceUUID = CBUUID(string: "FFF0")
+        let serviceUUID = CBUUID(string: "00001234-0000-1000-8000-00805f9b34fb")
         let service = CBMutableService(type: serviceUUID, primary: true)
         
         let characteristicUUID = CBUUID(string: characteristicSettings.UUID)

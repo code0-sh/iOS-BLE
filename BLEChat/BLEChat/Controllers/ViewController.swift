@@ -92,9 +92,9 @@ class ViewController: UIViewController {
             return
         }
         let defaultSettings = [
-            "date": ["UUID": "FFF1", "value": NSDate().dateString()],
-            "name": ["UUID": "FFF2", "value": defaultName],
-            "comment": ["UUID": "FFF3", "value": "\(defaultName)さんがチャットに参加しました。"]
+            "date": ["UUID": Constants.dateUUID, "value": NSDate().dateString()],
+            "name": ["UUID": Constants.nameUUID, "value": defaultName],
+            "comment": ["UUID": Constants.commentUUID, "value": "\(defaultName)さんがチャットに参加しました。"]
         ]
         guard let dateSettings = defaultSettings["date"] else {
             return

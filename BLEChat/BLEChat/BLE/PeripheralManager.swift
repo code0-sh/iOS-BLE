@@ -8,7 +8,7 @@ class PeripheralManager: NSObject {
     var service: CBMutableService!
     var characteristics: [String: Characteristic] = [:]
     var delegate: PeripheralManagerDelegate!
-    let serviceUUID = CBUUID(string: "FFF0")
+    let serviceUUID = CBUUID(string: Constants.serviceUUID)
     /// サービスを作成してペリフェラルマネージャに登録する
     init(date: Characteristic, name: Characteristic, comment: Characteristic) {
         self.characteristics["date"] = date

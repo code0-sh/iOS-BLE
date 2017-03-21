@@ -6,10 +6,10 @@ class CentralManager: NSObject {
     var delegate: CentralManagerDelegate!
     var isReaded = false
     let user: User = User()
-    let serviceUUID = CBUUID(string: "FFF0")
-    let characteristicDateUUID = CBUUID(string: "FFF1")
-    let characteristicNameUUID = CBUUID(string: "FFF2")
-    let characteristicCommentUUID = CBUUID(string: "FFF3")
+    let serviceUUID = CBUUID(string: Constants.serviceUUID)
+    let characteristicDateUUID = CBUUID(string: Constants.dateUUID)
+    let characteristicNameUUID = CBUUID(string: Constants.nameUUID)
+    let characteristicCommentUUID = CBUUID(string: Constants.commentUUID)
     /// サービスを作成してペリフェラルマネージャに登録する
     override init() {
         super.init()
