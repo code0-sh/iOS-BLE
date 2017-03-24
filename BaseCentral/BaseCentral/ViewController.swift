@@ -4,8 +4,8 @@ import CoreBluetooth
 class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDelegate {
     var centralManager: CBCentralManager!
     var peripheral: CBPeripheral!
-    let serviceUUID = CBUUID(string: "FFF0")
-    let characteristicUUID = CBUUID(string: "FFF1")
+    let serviceUUID = CBUUID(string: "00001234-0000-1000-8000-00805f9b34fb")
+    let characteristicUUID = CBUUID(string: "00001234-0001-1000-8000-00805f9b34fb")
     var isWriteState = false
     var isReadState = false
     var isNotificationSate = false
@@ -20,8 +20,8 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
         print("startScan")
         isNotificationSate = false
         isReadState = true
-        // セントラルマネージャを生成
-        self.centralManager = CBCentralManager(delegate: self, queue: nil, options: nil)
+        /// セントラルマネージャを生成
+        centralManager = CBCentralManager(delegate: self, queue: nil, options: nil)
     }
     /**
      * ペリフェラルのスキャンを停止する
@@ -29,7 +29,7 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
     @IBAction func stopScan(_ sender: UIButton) {
         print("stopScan")
         isNotificationSate = false
-        self.centralManager.stopScan()
+        centralManager.stopScan()
     }
     /**
      * 書き込み
@@ -37,8 +37,8 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
     @IBAction func write(_ sender: UIButton) {
         print("write")
         isWriteState = true
-        // セントラルマネージャを生成
-        self.centralManager = CBCentralManager(delegate: self, queue: nil, options: nil)
+        /// セントラルマネージャを生成
+        centralManager = CBCentralManager(delegate: self, queue: nil, options: nil)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,8 +51,8 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
     internal func centralManagerDidUpdateState(_ central: CBCentralManager) {
         switch central.state {
         case .poweredOn:
-            // CBUUIDオブジェクトの配列を指定すると該当するサービスをアドバタイズしているペリフェラルのみが返される
-            self.centralManager.scanForPeripherals(withServices: [serviceUUID], options: nil)
+            /// CBUUIDオブジェクトの配列を指定すると該当するサービスをアドバタイズしているペリフェラルのみが返される
+            centralManager.scanForPeripherals(withServices: [serviceUUID], options: nil)
         default:
             return
         }
@@ -62,12 +62,12 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
      */
     internal func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
         print("Name of BLE device discovered: \(String(describing: peripheral.name))")
-        // 接続先のペリフェラルが見つかったら、省電力のため、他のペリフェラルの走査は停止する
-        self.centralManager.stopScan()
+        /// 接続先のペリフェラルが見つかったら、省電力のため、他のペリフェラルの走査は停止する
+        centralManager.stopScan()
         
         self.peripheral = peripheral
-        // 検出したペリフェラルに接続する
-        self.centralManager.connect(peripheral, options: nil)
+        /// 検出したペリフェラルに接続する
+        centralManager.connect(peripheral, options: nil)
     }
     /**
      * ペリフェラルの接続に成功した際のデリゲートメソッド
@@ -75,10 +75,10 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
     internal func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
         print("Successful connect to the peripheral.")
         
-        // ペリフェラルとのやり取りを始める前に、ペリフェラルのデリデートをセット
+        /// ペリフェラルとのやり取りを始める前に、ペリフェラルのデリデートをセット
         peripheral.delegate = self
-        // サービスの検出開始
-        // 不要なサービスが多数見つかる場合、電池と時間が無駄になるので必要なサービスのUUIDを具体的に指定すると良い
+        /// サービスの検出開始
+        /// 不要なサービスが多数見つかる場合、電池と時間が無駄になるので必要なサービスのUUIDを具体的に指定すると良い
         peripheral.discoverServices([serviceUUID])
     }
     /**
@@ -100,8 +100,8 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
         }
         print("Discover \(services.count) services! \(services)")
         for service in services {
-            // 特性をすべて検出する
-            // 不要な特性が多数見つかる場合、電池と時間が無駄になるので必要な特性のUUIDを具体的に指定する
+            /// 特性を検出開始
+            /// 不要な特性が多数見つかる場合、電池と時間が無駄になるので必要な特性のUUIDを具体的に指定する
             peripheral.discoverCharacteristics([characteristicUUID], for: service)
         }
     }
@@ -114,30 +114,30 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
         }
         print("Discover \(characteristics.count) characteristics! \(characteristics)")
         for characteristic in characteristics {
-            // 読み取り
+            /// 読み取り
             if characteristic.properties.contains(.read) && isReadState == true {
                 isReadState = false
                 print("Start reading data with property read.")
-                // 特性の値を読み取る
+                /// 特性の値を読み取る
                 peripheral.readValue(for: characteristic)
             }
-            // 通知
+            /// 通知
             if characteristic.properties.contains(.notify) && isNotificationSate == false {
                 isNotificationSate = true
-                // 特性の値が変化したときに通知するよう申し込む
                 print("Apply to notify when property values change.")
+                /// 特性の値が変化したときに通知するよう申し込む
                 peripheral.setNotifyValue(true, for: characteristic)
             }
-            // 書き込み
+            /// 書き込み
             if characteristic.properties.contains(.write) && isWriteState == true {
                 isWriteState = false
                 print("Start writing data with property write.")
-                // 特性値を書き込む
                 guard let data = writeTextField.text?.data(using: String.Encoding.utf8) else {
                     return
                 }
+                /// 特性値を書き込む
                 peripheral.writeValue(data, for: characteristic, type: CBCharacteristicWriteType.withResponse)
-                // 入力欄をクリアする
+                /// 入力欄をクリアする
                 writeTextField.text = ""
             }
         }
@@ -156,7 +156,7 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
         print("Successful reading of characteristic values. service uuid: \(characteristic.service.uuid.uuidString), characteristic uuid: \(characteristic.uuid.uuidString), value: \(value)")
         print("End reading.")
         
-        // 特性の値をラベルに表示する
+        /// 特性の値をラベルに表示する
         characteristicLabel.text = value as String
     }
     /**
@@ -177,7 +177,7 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
             print("\(error.localizedDescription)")
             return
         }
-        // 特性の値は書き込み後の値が反映されない
+        /// 特性の値は書き込み後の値が反映されない
 //        guard let value = NSString(data: characteristic.value!, encoding: String.Encoding.utf8.rawValue) else {
 //            return
 //        }

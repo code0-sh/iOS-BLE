@@ -14,20 +14,21 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
      */
     internal func peripheralManagerDidUpdateState(_ peripheral: CBPeripheralManager) {
         switch peripheral.state {
+        /// Bluetoothが起動中
         case .poweredOn:
-            // サービスを作成してペリフェラルマネージャに登録する
+            /// サービスを作成してペリフェラルマネージャに登録する
             setupService()
             
-            // キャラクタリスティクに値を設定する
-            // * ペリフェラルマネージャにサービスを追加してから値を設定すること
-            let value = "HOGEHOGE"
-            let data = value.data(using: String.Encoding.utf8)
-            self.characteristic.value = data
+            /// キャラクタリスティクに値を設定する
+            /// * ペリフェラルマネージャにサービスを追加してから値を設定すること
+            let stringValue = "HOGEHOGE"
+            let dataValue = stringValue.data(using: String.Encoding.utf8)
+            characteristic.value = dataValue
             
-            // * アドバタイズするのはデバイスのローカル名とサービスのUUIDだけ
-            // * アドバタイズの容量はアプリケーションがフォアグラウンド状態で28バイトまででこの領域に入りきらないサービスUUIDは、特別な「オーバーフロー」領域に追加する。その場合検出するためには、明示的に当該UUIDを指定して走査しないといけない。
+            /// * アドバタイズするのはデバイスのローカル名とサービスのUUIDだけ
+            /// * アドバタイズの容量はアプリケーションがフォアグラウンド状態で28バイトまででこの領域に入りきらないサービスUUIDは、特別な「オーバーフロー」領域に追加する。その場合検出するためには、明示的に当該UUIDを指定して走査しないといけない。
             let advertisementData: [String : Any] = [CBAdvertisementDataLocalNameKey: "Test Device",
-                                                     CBAdvertisementDataServiceUUIDsKey: self.serviceUUIDs]
+                                                     CBAdvertisementDataServiceUUIDsKey: serviceUUIDs]
             peripheralManager.startAdvertising(advertisementData)
         default:
             break
@@ -61,9 +62,9 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
         print("characteristic.service.uuid:\(request.characteristic.service.uuid)")
         print("characteristic.uuid:\(request.characteristic.uuid)")
         
-        if request.characteristic.uuid.isEqual(self.characteristic.uuid) {
-            request.value = self.characteristic.value
-            self.peripheralManager.respond(to: request, withResult: .success)
+        if request.characteristic.uuid.isEqual(characteristic.uuid) {
+            request.value = characteristic.value
+            peripheralManager.respond(to: request, withResult: .success)
         }
     }
     /**
@@ -72,48 +73,45 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
     internal func peripheralManager(_ peripheral: CBPeripheralManager, didReceiveWrite requests: [CBATTRequest]) {
         print("Receive a Write Request from Central.")
         for request in requests {
-            if request.characteristic.uuid.isEqual(self.characteristic.uuid) {
-                self.characteristic.value = request.value
+            if request.characteristic.uuid.isEqual(characteristic.uuid) {
+                characteristic.value = request.value
             }
         }
-        // 要求に応答する
-        self.peripheralManager.respond(to: requests[0], withResult: .success)
+        /// 要求に応答する
+        peripheralManager.respond(to: requests[0], withResult: .success)
         
-        // 通知を更新する
-        guard let value = self.characteristic.value else {
+        guard let value = characteristic.value else {
             return
         }
-        self.peripheralManager.updateValue(value, for: self.characteristic, onSubscribedCentrals: nil)
+        /// 更新をセントラルに通知する
+        peripheralManager.updateValue(value, for: characteristic, onSubscribedCentrals: nil)
     }
     /**
-     * セントラルからの通知要求に応答する際のデリゲートメソッド
+     * セントラルが特性値の通知を要求したときに呼び出されるデリゲートメソッド
      */
-//    internal func peripheralManager(_ peripheral: CBPeripheralManager, central: CBCentral, didSubscribeTo characteristic: CBCharacteristic) {
-//        print("Subscribeリクエストを受信")
-//        print("Subscribe中のセントラル: \(characteristic.uuid.uuidString)")
-//        if let data = self.characteristic.value {
-//            peripheralManager.updateValue(data, for: self.characteristic, onSubscribedCentrals: nil)
-//        }
-//    }
+    internal func peripheralManager(_ peripheral: CBPeripheralManager, central: CBCentral, didSubscribeTo characteristic: CBCharacteristic) {
+        print("Subscribeリクエストを受信")
+        print("Subscribe中のセントラル: \(characteristic.uuid.uuidString)")
+    }
     /**
      * サービスを作成してペリフェラルマネージャに登録する
      */
     private func setupService() {
-        let serviceUUID = CBUUID(string: "FFF0")
+        let serviceUUID = CBUUID(string: "00001234-0000-1000-8000-00805f9b34fb")
         let service = CBMutableService(type: serviceUUID, primary: true)
         
-        let characteristicUUID = CBUUID(string: "FFF1")
-        // * 重要なデータについてはペアリングした機器からのアクセスのみを許可する
+        let characteristicUUID = CBUUID(string: "00001234-0001-1000-8000-00805f9b34fb")
+        /// * 重要なデータについてはペアリングした機器からのアクセスのみを許可する
         let properties: CBCharacteristicProperties = [.notify, .read, .write]
         let permissions: CBAttributePermissions = [.readable, .writeable]
         
-        self.characteristic = CBMutableCharacteristic(type: characteristicUUID,
-                                                      properties: properties,
-                                                      value: nil,
-                                                      permissions: permissions)
+        characteristic = CBMutableCharacteristic(type: characteristicUUID,
+                                                 properties: properties,
+                                                 value: nil,
+                                                 permissions: permissions)
         
-        service.characteristics = [self.characteristic]
-        self.serviceUUIDs.append(serviceUUID)
+        service.characteristics = [characteristic]
+        serviceUUIDs.append(serviceUUID)
         peripheralManager.add(service)
     }
     
@@ -127,7 +125,7 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
      *アドバタイズを停止する
      */
     @IBAction func stopAdvertising(_ sender: UIButton) {
-        print("Stop advertisement")
+        print("Stop advertisement.")
         peripheralManager.stopAdvertising()
     }
 }
