@@ -15,6 +15,7 @@ class PeripheralManager: NSObject {
         self.characteristics["name"] = name
         self.characteristics["comment"] = comment
         super.init()
-        self.peripheralManager = CBPeripheralManager(delegate: self, queue: nil, options: nil)
+        let communicationQueue = DispatchQueue.global(qos: DispatchQoS.QoSClass.default)
+        self.peripheralManager = CBPeripheralManager(delegate: self, queue: communicationQueue, options: nil)
     }
 }

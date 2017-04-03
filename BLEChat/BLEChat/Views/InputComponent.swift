@@ -32,6 +32,7 @@ class InputComponent: UIView, UITextFieldDelegate {
         sendButton.addTarget(self,
                              action: #selector(touchSendButton),
                              for: .touchUpInside)
+        sendButton.isExclusiveTouch = true
         addSubview(sendButton)
     }
     /**
@@ -45,6 +46,7 @@ class InputComponent: UIView, UITextFieldDelegate {
         settingButton.addTarget(self,
                                 action: #selector(touchSettingButton),
                                 for: .touchUpInside)
+        settingButton.isExclusiveTouch = true
         addSubview(settingButton)
     }
     // MARK: delegate

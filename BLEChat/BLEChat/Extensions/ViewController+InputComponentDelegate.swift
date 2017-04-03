@@ -11,9 +11,14 @@ extension ViewController: InputComponentDelegate {
         }
         /// 特性値の再設定
         /// コメント
-        updateComment()
-        /// 日付
-        updateDate()
+        self.updateComment()
+        DispatchQueue.global(qos: .default).async {
+            DispatchQueue.main.async {
+                /// 日付
+                self.updateDate()
+            }
+        }
+
         /// 入力欄をクリアする
         inputComponent.textField.text = ""
         /// コメントを追加する
