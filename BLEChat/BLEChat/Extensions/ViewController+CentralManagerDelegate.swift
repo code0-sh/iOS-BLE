@@ -8,5 +8,7 @@ extension ViewController: CentralManagerDelegate {
         let user = User(date: user.date, name: user.name, comment: user.comment)
         /// コメントを追加する
         addComment(user: user)
+        /// コメントを読み上げる
+        readComment(comment: user.comment)
     }
 }

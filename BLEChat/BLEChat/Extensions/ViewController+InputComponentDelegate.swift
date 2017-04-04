@@ -23,6 +23,8 @@ extension ViewController: InputComponentDelegate {
         inputComponent.textField.text = ""
         /// コメントを追加する
         addComment(user: user)
+        /// コメントを読み上げる
+        readComment(comment: user.comment)
     }
     /**
      * 設定画面に遷移する

@@ -1,4 +1,5 @@
 import UIKit
+import AVFoundation
 
 class ViewController: UIViewController {
     var users: [User] = []
@@ -82,6 +83,14 @@ class ViewController: UIViewController {
                                                y: tableView.contentSize.height - tableView.frame.size.height),
                                        animated: false)
         }
+    }
+    /**
+     * コメントを読み上げる
+     */
+    func readComment(comment: String) {
+        let synthesizer = AVSpeechSynthesizer()
+        let utterance = AVSpeechUtterance(string: comment)
+        synthesizer.speak(utterance)
     }
     /**
      * ペリフェラルマネージャを生成する
