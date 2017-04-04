@@ -10,7 +10,7 @@ class CommentBalloonView: UIView {
         guard let context = UIGraphicsGetCurrentContext() else {
             return
         }
-        context.setFillColor(UIColor.green.cgColor)
+        context.setFillColor(GlobalColor.colorBalloon.cgColor)
         contextBalloonPath(context: context, rect: rect)
     }
     private func contextBalloonPath(context: CGContext, rect: CGRect) {
