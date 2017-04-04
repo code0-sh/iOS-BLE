@@ -91,6 +91,15 @@ extension CentralManager: CBCentralManagerDelegate, CBPeripheralDelegate {
         }
     }
     /**
+     * RSSIの読み取りを終了した際のデリゲートメソッド
+     */
+    internal func peripheral(_ peripheral: CBPeripheral, didReadRSSI RSSI: NSNumber, error: Error?) {
+        isReaded = false
+        user.distance = Int(RSSI)
+        /// Controllerに通知する
+        self.delegate.readEndNotificationFromCentralManager(user: user)
+    }
+    /**
      * 特性の値の読み取りが終了した際のデリゲートメソッド
      */
     internal func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
@@ -114,13 +123,10 @@ extension CentralManager: CBCentralManagerDelegate, CBPeripheralDelegate {
         case characteristicCommentUUID:
             isReaded = true
             user.comment = value as String
+            /// RSSIの読み取り
+            peripheral.readRSSI()
         default:
             return
-        }
-        if isReaded {
-            isReaded = false
-            /// Controllerに通知する
-            self.delegate.readEndNotificationFromCentralManager(user: user)
         }
     }
     /**

@@ -4,13 +4,18 @@ import CoreGraphics
 class CommentBalloonView: UIView {
     let triangleSideLength: CGFloat = 20
     let triangleHeight: CGFloat = 20
+    var fillColor = GlobalColor.defalutColorBalloon {
+        didSet {
+            setNeedsDisplay()
+        }
+    }
     override func draw(_ rect: CGRect) {
         super.draw(rect)
         /// コンテキストを取得
         guard let context = UIGraphicsGetCurrentContext() else {
             return
         }
-        context.setFillColor(GlobalColor.colorBalloon.cgColor)
+        fillColor.setFill()
         contextBalloonPath(context: context, rect: rect)
     }
     private func contextBalloonPath(context: CGContext, rect: CGRect) {

@@ -22,6 +22,11 @@ class CommentComponent: UIView {
                            width: Constants.commentComponentSideLength,
                            height: Constants.commentComponentHeightLength)
         let balloon = CommentBalloonView(frame: frame)
+        if user.distance == 0 {
+            balloon.fillColor = GlobalColor.defalutColorBalloon
+        } else {
+            balloon.fillColor = UIColor.hsl(distance: user.distance)
+        }
         balloon.backgroundColor = UIColor.white
         /// 日付
         let date = CustomLabel(CGRect.zero, data: user.date)

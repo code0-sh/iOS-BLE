@@ -61,7 +61,7 @@ class InputComponent: UIView, UITextFieldDelegate {
             return
         }
         let date = NSDate().dateString()
-        let user = User(date: date, name: name, comment: comment)
+        let user = User(date: date, name: name, comment: comment, distance: 0)
         self.delegate?.postComment(user: user)
         textField.text = ""
     }

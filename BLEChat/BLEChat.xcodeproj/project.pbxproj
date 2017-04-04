@@ -53,7 +53,7 @@
 		1346EADE1E6D2667001F2F7B /* CustomLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 		1346EAE31E6D48C4001F2F7B /* ViewController+UITableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ViewController+UITableViewDataSource.swift"; sourceTree = "<group>"; };
 		1346EAE51E6D4909001F2F7B /* ViewController+UITableViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ViewController+UITableViewDelegate.swift"; sourceTree = "<group>"; };
-		135BCA471E933B9A00AC5AA5 /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		135BCA471E933B9A00AC5AA5 /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIColor.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		135BCA491E933BD600AC5AA5 /* GlobalColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalColor.swift; sourceTree = "<group>"; };
 		1372D2191E76338D00920C2A /* PeripheralManagerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeripheralManagerDelegate.swift; sourceTree = "<group>"; };
 		1372D21B1E7633F100920C2A /* PeripheralManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeripheralManager.swift; sourceTree = "<group>"; };
@@ -109,6 +109,7 @@
 				13A888BA1E6CE1040012F47D /* Main.storyboard */,
 			);
 			name = Storyboard;
+			path = Storyboard;
 			sourceTree = "<group>";
 		};
 		1346EAE21E6D3DCA001F2F7B /* Views */ = {
@@ -126,11 +127,10 @@
 			isa = PBXGroup;
 			children = (
 				1378D01B1E72673200EDC071 /* ViewController+CentralManagerDelegate.swift */,
-				1346EAE31E6D48C4001F2F7B /* ViewController+UITableViewDataSource.swift */,
-				1346EAE51E6D4909001F2F7B /* ViewController+UITableViewDelegate.swift */,
 				1372D2211E763BA200920C2A /* ViewController+InputComponentDelegate.swift */,
 				137D31661E776EC000F706B3 /* ViewController+PeripheralManagerDelegate.swift */,
-				135BCA471E933B9A00AC5AA5 /* UIColor.swift */,
+				1346EAE31E6D48C4001F2F7B /* ViewController+UITableViewDataSource.swift */,
+				1346EAE51E6D4909001F2F7B /* ViewController+UITableViewDelegate.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -138,8 +138,8 @@
 		1378D00F1E723A0700EDC071 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				1378D0101E723A2600EDC071 /* User.swift */,
 				1372D21F1E76351800920C2A /* Characteristic.swift */,
+				1378D0101E723A2600EDC071 /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -148,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				1378D0121E72605400EDC071 /* NSDate.swift */,
+				135BCA471E933B9A00AC5AA5 /* UIColor.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -157,8 +158,8 @@
 			children = (
 				1378D0191E72648700EDC071 /* CentralManager+CBCentralManagerDelegate+CBPeripheralDelegate.swift */,
 				1378D0171E72636000EDC071 /* CentralManager.swift */,
-				1372D21B1E7633F100920C2A /* PeripheralManager.swift */,
 				1372D21D1E76349A00920C2A /* PeripheralManager+CBPeripheralManagerDelegate.swift */,
+				1372D21B1E7633F100920C2A /* PeripheralManager.swift */,
 			);
 			path = BLE;
 			sourceTree = "<group>";
@@ -184,13 +185,13 @@
 		13A888B51E6CE1030012F47D /* BLEChat */ = {
 			isa = PBXGroup;
 			children = (
-				131B73761E766E500033954D /* Storyboard */,
 				1378D01F1E726FB300EDC071 /* BLE */,
 				13DC33BE1E6E4CAB000D0DB8 /* Constants */,
 				13DC33BB1E6E4858000D0DB8 /* Controllers */,
 				1346EAE71E6D4A80001F2F7B /* Extensions */,
 				1378D00F1E723A0700EDC071 /* Models */,
 				13DC33C11E6E677F000D0DB8 /* Protocols */,
+				131B73761E766E500033954D /* Storyboard */,
 				1378D01D1E726DEA00EDC071 /* Utilities */,
 				1346EAE21E6D3DCA001F2F7B /* Views */,
 				13A888B61E6CE1030012F47D /* AppDelegate.swift */,
@@ -212,8 +213,8 @@
 		13DC33BB1E6E4858000D0DB8 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				13A888B81E6CE1030012F47D /* ViewController.swift */,
 				131B73721E765FBA0033954D /* SettingViewController.swift */,
+				13A888B81E6CE1030012F47D /* ViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
