@@ -1,9 +1,9 @@
 import UIKit
 import CoreGraphics
 
-class CommentBalloonView: UIView {
-    let triangleSideLength: CGFloat = 20
-    let triangleHeight: CGFloat = 20
+final class CommentBalloonView: UIView {
+    private let triangleSideLength: CGFloat = 20
+    private let triangleHeight: CGFloat = 20
     var fillColor = GlobalColor.defalutColorBalloon {
         didSet {
             setNeedsDisplay()
@@ -28,8 +28,8 @@ class CommentBalloonView: UIView {
         /// 塗りつぶし
         context.addRect(CGRect(x: 0,
                                y: 0,
-                               width: Constants.commentComponentSideLength - triangleSideLength,
-                               height: Constants.commentComponentHeightLength))
+                               width: rect.width - triangleSideLength,
+                               height: rect.height))
         context.fillPath()
         context.move(to: CGPoint(x: triangleBottomCorner.x, y: triangleBottomCorner.y))
         context.addLine(to: CGPoint(x: triangleCenterCorner.x, y: triangleCenterCorner.y))

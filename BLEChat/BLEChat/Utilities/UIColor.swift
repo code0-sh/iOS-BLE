@@ -1,9 +1,14 @@
 import UIKit
 
 extension UIColor {
-    /**
-     * RGBをUIColorに変換する
-     */
+    /// RGBをUIColorに変換する
+    ///
+    /// - Parameters:
+    ///   - red: 赤
+    ///   - green: 緑
+    ///   - blue: 青
+    ///   - alpha: 不透明度
+    /// - Returns: UIColor
     class func rgb(red: Double,
                    green: Double,
                    blue: Double,
@@ -13,9 +18,10 @@ extension UIColor {
                        blue: CGFloat(blue) / 255.0,
                        alpha: alpha)
     }
-    /**
-     * RSSIをUIColorに変換する
-     */
+    /// RSSIをUIColorに変換する
+    ///
+    /// - Parameter distance: RSSI
+    /// - Returns: UIColor
     class func hsl(distance: Int) -> UIColor {
         let max: Double = 255
         let min: Double = 0

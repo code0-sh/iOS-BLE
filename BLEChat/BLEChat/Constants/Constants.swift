@@ -4,7 +4,7 @@ struct Constants {
     /// 要素間の間隔
     static let frameMargin: CGFloat = 20
     /// コメントコンポーメント
-    static let commentComponentSideLength: CGFloat = 280
+    static let commentBalloonViewWidth: CGFloat = 280
     static let commentComponentHeightLength: CGFloat = 100
     /// 入力コンポーネント
     static let inputComponentHeight: CGFloat = 200

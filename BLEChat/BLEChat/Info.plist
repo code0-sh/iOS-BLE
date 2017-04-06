@@ -21,7 +21,7 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSBluetoothPeripheralUsageDescription</key>
-	<string>サンプルプログラムのため使用します。</string>
+	<string>サンプルプログラムのため使用します</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>bluetooth-central</string>

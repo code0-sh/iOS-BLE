@@ -1,9 +1,9 @@
 import UIKit
 
 extension ViewController: InputComponentDelegate {
-    /**
-     * コメントを投稿する
-     */
+    /// コメントを投稿する
+    ///
+    /// - Parameter user: User
     func postComment(user: User) {
         guard (peripheralManager?.peripheralManager.isAdvertising) != nil else {
             print("Advertisement is stopped.")
@@ -26,9 +26,7 @@ extension ViewController: InputComponentDelegate {
         /// コメントを読み上げる
         readComment(comment: user.comment)
     }
-    /**
-     * 設定画面に遷移する
-     */
+    /// 設定画面に遷移する
     func moveSetting() {
         /// アドバタイズを停止する
         peripheralManager?.peripheralManager?.stopAdvertising()

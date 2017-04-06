@@ -2,7 +2,7 @@ import CoreBluetooth
 
 class CentralManager: NSObject {
     var centralManager: CBCentralManager!
-    var peripheral: CBPeripheral!
+    var peripherals = [CBPeripheral]()
     var delegate: CentralManagerDelegate!
     var isReaded = false
     let user: User = User()

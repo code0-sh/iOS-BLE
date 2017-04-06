@@ -6,6 +6,7 @@ class ViewController: UIViewController {
     var centralManager: CentralManager?
     var peripheralManager: PeripheralManager?
     var inputComponent: InputComponent!
+    var stubCell: CustomTableViewCell!
     private var tableView: UITableView!
     private var barHeight: CGFloat = 0
     private var maxCommentCount: Int = 0
@@ -15,7 +16,8 @@ class ViewController: UIViewController {
         barHeight = UIApplication.shared.statusBarFrame.size.height
         tableView = UITableView(frame: CGRect.zero)
         /// Cellの登録
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        tableView.register(CustomTableViewCell.self, forCellReuseIdentifier: "Cell")
+        stubCell = tableView.dequeueReusableCell(withIdentifier: "Cell") as? CustomTableViewCell
         /// UITableViewの境界線を消す
         tableView.separatorStyle = .none
         /// UITableView全体のセルを選択不可能にする
@@ -28,6 +30,7 @@ class ViewController: UIViewController {
         inputComponent = InputComponent(frame: CGRect.zero)
         inputComponent.delegate = self
         self.view.addSubview(inputComponent)
+        constrainView()
     }
     override func viewDidAppear(_ animated: Bool) {
         /// セントラルマネージャを生成する
@@ -38,8 +41,6 @@ class ViewController: UIViewController {
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        layoutTableView()
-        layoutInputFieldView()
         /// 表示エリアの最大コメント数を更新する
         maxCommentCount = Int(
             floor(
@@ -47,32 +48,24 @@ class ViewController: UIViewController {
             )
         )
     }
-    private func layoutTableView() {
-        tableView.frame.origin.y = barHeight
-        tableView.frame.size = CGSize(width: self.view.frame.width, height: self.view.frame.height - Constants.inputComponentHeight)
+    /// コンストレイント
+    private func constrainView() {
+        /// テーブルエリア
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: barHeight).isActive = true
+        tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -150).isActive = true
+        tableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 0).isActive = true
+        tableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: 0).isActive = true
+        /// 入力エリア
+        inputComponent.translatesAutoresizingMaskIntoConstraints = false
+        inputComponent.topAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -150).isActive = true
+        inputComponent.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0).isActive = true
+        inputComponent.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 0).isActive = true
+        inputComponent.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: 0).isActive = true
     }
-    private func layoutInputFieldView() {
-        inputComponent.frame.origin.y = self.view.frame.height - Constants.inputComponentHeight
-        inputComponent.frame.size = CGSize(width: self.view.frame.width, height: Constants.inputComponentHeight)
-        inputComponent.textField.frame = CGRect(x: 0,
-                                 y: 0,
-                                 width: self.view.frame.width - Constants.frameMargin,
-                                 height: Constants.textFieldHeight)
-        inputComponent.textField.center.x = self.view.frame.width / 2
-        inputComponent.sendButton.frame = CGRect(x: 0,
-                                                 y: Constants.textFieldHeight + Constants.frameMargin,
-                                                 width: self.view.frame.width - Constants.frameMargin,
-                                                 height: Constants.buttonHeight)
-        inputComponent.sendButton.center.x = self.view.frame.width / 2
-        inputComponent.settingButton.frame = CGRect(x: 0,
-                                                 y: Constants.textFieldHeight + Constants.frameMargin * 2 + Constants.buttonHeight,
-                                                 width: self.view.frame.width - Constants.frameMargin,
-                                                 height: Constants.buttonHeight)
-        inputComponent.settingButton.center.x = self.view.frame.width / 2
-    }
-    /**
-     * コメントを追加する
-     */
+    /// コメントを追加する
+    ///
+    /// - Parameter user: User
     func addComment(user: User) {
         print("user:\(user)")
         users.append(user)
@@ -84,17 +77,17 @@ class ViewController: UIViewController {
                                        animated: false)
         }
     }
-    /**
-     * コメントを読み上げる
-     */
+    /// コメントを読み上げる
+    ///
+    /// - Parameter comment: String
     func readComment(comment: String) {
-        let synthesizer = AVSpeechSynthesizer()
-        let utterance = AVSpeechUtterance(string: comment)
-        synthesizer.speak(utterance)
+//        let synthesizer = AVSpeechSynthesizer()
+//        let utterance = AVSpeechUtterance(string: comment)
+//        utterance.voice = AVSpeechSynthesisVoice(language: "ja-JP")
+//        utterance.rate = 0.5
+//        synthesizer.speak(utterance)
     }
-    /**
-     * ペリフェラルマネージャを生成する
-     */
+    /// ペリフェラルマネージャを生成する
     private func startAdvertising() {
         let userDefaults = UserDefaults.standard
         guard let defaultName = userDefaults.string(forKey: "name") else {

@@ -23,7 +23,7 @@ extension CentralManager: CBCentralManagerDelegate, CBPeripheralDelegate {
         print("Name of BLE device discovered: \(String(describing: peripheral.name))")
         /// 接続先のペリフェラルが見つかったら、省電力のため、他のペリフェラルの走査は停止する
         centralManager.stopScan()
-        self.peripheral = peripheral
+        self.peripherals.append(peripheral)
         /// 検出したペリフェラルに接続する
         centralManager.connect(peripheral, options: nil)
     }

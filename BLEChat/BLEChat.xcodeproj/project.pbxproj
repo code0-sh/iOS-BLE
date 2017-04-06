@@ -32,7 +32,7 @@
 		13A888C11E6CE1040012F47D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13A888BF1E6CE1040012F47D /* LaunchScreen.storyboard */; };
 		13A888CC1E6CE1040012F47D /* BLEChatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A888CB1E6CE1040012F47D /* BLEChatTests.swift */; };
 		13A888D91E6CFB4F0012F47D /* CommentBalloonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A888D81E6CFB4F0012F47D /* CommentBalloonView.swift */; };
-		13C3AFDC1E70E157006433EB /* CommentComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C3AFDB1E70E157006433EB /* CommentComponent.swift */; };
+		13C3AFDC1E70E157006433EB /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C3AFDB1E70E157006433EB /* CustomTableViewCell.swift */; };
 		13DC33BD1E6E490A000D0DB8 /* InputComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13DC33BC1E6E490A000D0DB8 /* InputComponent.swift */; };
 		13DC33C01E6E4CC9000D0DB8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13DC33BF1E6E4CC9000D0DB8 /* Constants.swift */; };
 		13DC33C31E6E67AF000D0DB8 /* InputComponentDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13DC33C21E6E67AF000D0DB8 /* InputComponentDelegate.swift */; };
@@ -53,7 +53,7 @@
 		1346EADE1E6D2667001F2F7B /* CustomLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 		1346EAE31E6D48C4001F2F7B /* ViewController+UITableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ViewController+UITableViewDataSource.swift"; sourceTree = "<group>"; };
 		1346EAE51E6D4909001F2F7B /* ViewController+UITableViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ViewController+UITableViewDelegate.swift"; sourceTree = "<group>"; };
-		135BCA471E933B9A00AC5AA5 /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIColor.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		135BCA471E933B9A00AC5AA5 /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		135BCA491E933BD600AC5AA5 /* GlobalColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalColor.swift; sourceTree = "<group>"; };
 		1372D2191E76338D00920C2A /* PeripheralManagerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeripheralManagerDelegate.swift; sourceTree = "<group>"; };
 		1372D21B1E7633F100920C2A /* PeripheralManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeripheralManager.swift; sourceTree = "<group>"; };
@@ -78,7 +78,7 @@
 		13A888CB1E6CE1040012F47D /* BLEChatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLEChatTests.swift; sourceTree = "<group>"; };
 		13A888CD1E6CE1040012F47D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		13A888D81E6CFB4F0012F47D /* CommentBalloonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentBalloonView.swift; sourceTree = "<group>"; };
-		13C3AFDB1E70E157006433EB /* CommentComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentComponent.swift; sourceTree = "<group>"; };
+		13C3AFDB1E70E157006433EB /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		13DC33BC1E6E490A000D0DB8 /* InputComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputComponent.swift; sourceTree = "<group>"; };
 		13DC33BF1E6E4CC9000D0DB8 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		13DC33C21E6E67AF000D0DB8 /* InputComponentDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputComponentDelegate.swift; sourceTree = "<group>"; };
@@ -108,7 +108,6 @@
 				13A888BF1E6CE1040012F47D /* LaunchScreen.storyboard */,
 				13A888BA1E6CE1040012F47D /* Main.storyboard */,
 			);
-			name = Storyboard;
 			path = Storyboard;
 			sourceTree = "<group>";
 		};
@@ -116,7 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				13A888D81E6CFB4F0012F47D /* CommentBalloonView.swift */,
-				13C3AFDB1E70E157006433EB /* CommentComponent.swift */,
+				13C3AFDB1E70E157006433EB /* CustomTableViewCell.swift */,
 				1346EADE1E6D2667001F2F7B /* CustomLabel.swift */,
 				13DC33BC1E6E490A000D0DB8 /* InputComponent.swift */,
 			);
@@ -377,7 +376,7 @@
 				13DC33BD1E6E490A000D0DB8 /* InputComponent.swift in Sources */,
 				1378D0181E72636000EDC071 /* CentralManager.swift in Sources */,
 				1346EAE41E6D48C4001F2F7B /* ViewController+UITableViewDataSource.swift in Sources */,
-				13C3AFDC1E70E157006433EB /* CommentComponent.swift in Sources */,
+				13C3AFDC1E70E157006433EB /* CustomTableViewCell.swift in Sources */,
 				13DC33C01E6E4CC9000D0DB8 /* Constants.swift in Sources */,
 				135BCA481E933B9A00AC5AA5 /* UIColor.swift in Sources */,
 				1372D2201E76351800920C2A /* Characteristic.swift in Sources */,

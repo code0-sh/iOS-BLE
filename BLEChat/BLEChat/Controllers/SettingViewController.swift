@@ -5,9 +5,9 @@ class SettingViewController: UIViewController {
     private var name: String = "未設定"
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
-    /**
-     * 設定ボタンをタップ
-     */
+    /// 設定ボタンをタップ
+    ///
+    /// - Parameter sender: UIButton
     @IBAction func settingAction(_ sender: UIButton) {
         let userDefaults = UserDefaults.standard
         userDefaults.set(nameTextField.text, forKey: "name")
@@ -28,9 +28,7 @@ class SettingViewController: UIViewController {
             moveChat()
         }
     }
-    /**
-     * Caht画面に遷移する
-     */
+    /// Chat画面に遷移する
     private func moveChat() {
         let storyboard: UIStoryboard = self.storyboard!
         let vc = storyboard.instantiateViewController(withIdentifier: "chat")
